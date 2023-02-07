@@ -9,6 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.diceroller"
+        vectorDrawables.useSupportLibrary = true
         minSdk 27
         targetSdk 33
         versionCode 1

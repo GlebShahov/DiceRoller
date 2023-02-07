@@ -11,14 +11,15 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     lateinit var diceImage: ImageView
+    lateinit var diceImage2: ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        diceImage = findViewById(R.id.dice_image)
-
+        diceImage = findViewById(R.id.dice_image1)
+        diceImage2 = findViewById(R.id.dice_image2)
 
         val rollButton: Button = findViewById(R.id.roll_button)
 
@@ -29,7 +30,13 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice(){
        // Toast.makeText(this, "Button is clicked", Toast.LENGTH_SHORT).show();
 
-        val drawableResource = when((1..6).random()){
+        diceImage.setImageResource(getRandomDiceImage())
+        diceImage2.setImageResource(getRandomDiceImage())
+
+    }
+    private fun getRandomDiceImage() : Int {
+
+        return when((1..6).random()){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -38,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
-        diceImage.setImageResource(drawableResource)
     }
 
 
